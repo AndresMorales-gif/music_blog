@@ -2,10 +2,25 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>{% block title %}Welcome!{% endblock %}</title>
+        <title>{% block title %}{% endblock %}</title>
         {% block stylesheets %}{% endblock %}
     </head>
     <body>
+    	<div>
+    		<nav>
+    			<ul>
+    				<li>
+    					<a href="/">Home</a>
+    				</li>
+    				<li>
+    					<a href="/blog">Blog</a>
+    				</li>
+    				<li>
+    					<a href="/contact">Contact</a>
+    				</li>
+    			</ul>
+    		</nav>
+    	</div>
         {% block body %}{% endblock %}
         {% block javascripts %}{% endblock %}
     </body>
