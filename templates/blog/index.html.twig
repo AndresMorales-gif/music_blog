@@ -11,8 +11,12 @@
 <div>
 	{% if blogSelect %}
 		<h3>{{ blogSelect.title }}</h3>
-		<h5>{{ blogSelect.idUser.name }} {{ blogSelect.idUser.lastName }} </h5>
+		<h5>Autor: {{ blogSelect.idUser.name }} {{ blogSelect.idUser.lastName }} </h5>
 		<h6>{{ blogSelect.datePost.format('Y-m-d H:i:s') }} </h6>
+		{% if blogSelect.image %}
+			<img src="{{asset('uploads/images/') ~ blogSelect.image}}">
+		{% endif %}
+		<p>{{ blogSelect.body }}</p>
 	{% endif %}
 </div>
 {% endblock %}
