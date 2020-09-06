@@ -17,7 +17,7 @@ class BlogController extends AbstractController
     	$blogs = $repository->findAll();
 
         return $this->render('blog/index.html.twig', [
-            'blogs' => $blogs,
+            'blogs' => $blogs, 'blogSelect' => ''
         ]);
     }
 
@@ -28,9 +28,9 @@ class BlogController extends AbstractController
     {
     	$repository = $this->getDoctrine()->getRepository(BlogPosts::class);
     	$blogs = $repository->findAll();
-
+        $blogSelect = $repository->find($id);
         return $this->render('blog/index.html.twig', [
-            'blogs' => $blogs,
+            'blogs' => $blogs, 'blogSelect' => $blogSelect
         ]);
     }
 }

@@ -5,7 +5,14 @@
 {% block body %}
 <div>
 	{% for blog in blogs %}
-	    <a href="{{ url('id_blog',{blog.idBlogPost}) }}">{{blog.title}}</a>
+	    <a href="{{ url('id_blog',{'id':blog.idBlogPost}) }}">{{blog.title}}</a>
 	{% endfor %}
+</div>
+<div>
+	{% if blogSelect %}
+		<h3>{{ blogSelect.title }}</h3>
+		<h5>{{ blogSelect.idUser.name }} {{ blogSelect.idUser.lastName }} </h5>
+		<h6>{{ blogSelect.datePost.format('Y-m-d H:i:s') }} </h6>
+	{% endif %}
 </div>
 {% endblock %}
