@@ -6,18 +6,35 @@
         {% block stylesheets %}{% endblock %}
     </head>
     <body>
+        <div>
+            {% if is_granted('IS_ANONYMOUS') %}
+            <div>
+                <a href="{{url('app_login')}}"><button>Login</button></a>
+                <a href="{{url('app_register')}}">Registrate!!</a>
+            </div>
+            {%  else %}
+            <div>
+                <a href="{{url('app_logout')}}"><button>Logout</button></a>
+            </div>
+            {% endif %} 
+        </div>
     	<div>
     		<nav>
     			<ul>
     				<li>
-    					<a href="/">Home</a>
+    					<a href="{{url('home')}}">Home</a>
     				</li>
     				<li>
-    					<a href="/blog">Blog</a>
+    					<a href="{{url('blog')}}">Blog</a>
     				</li>
     				<li>
-    					<a href="/contacto">Contact</a>
+    					<a href="{{url('contacto')}}">Contact</a>
     				</li>
+                    {% if is_granted('ROLE_USER') %}
+                    <li>
+                        <a href="">Mis entradas de blog</a>
+                    </li>
+                    {% endif %}
     			</ul>
     		</nav>
     	</div>
