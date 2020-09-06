@@ -5,6 +5,7 @@
 {% block body %}
 {% for blog in blogs %}
     <span>{{ blog.title }}</span>
+    <span>{{ blog.idUser.name }}</span>
     <a href="{{ url('edit_blog', { 'id': blog.idBlogPost }) }}"><button>Editar</button></a>
     <a href="{{ url('delete_blog', { 'id': blog.idBlogPost }) }}"><button>Eliminar</button></a>
 {% endfor %}
