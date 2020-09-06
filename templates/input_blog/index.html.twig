@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hablemos de música: Mis estradas!{% endblock %}
+
+{% block body %}
+{% for blog in blogs %}
+    <span>{{ blog.title }}</span>
+    <span>{{ blog.idUser.name }}</span>
+    <a href="{{ url('edit_blog', { 'id': blog.idBlogPost }) }}"><button>Editar</button></a>
+    <a href="{{ url('delete_blog', { 'id': blog.idBlogPost }) }}"><button>Eliminar</button></a>
+{% endfor %}
+
+<div>
+	<h3>Bienvenido {{ app.user.username }} que vamos a escribir hoy</h3>
+	<a href="{{url('new_blog')}}"><button>Nueva entrada</button></a>
+
+</div>
+{% endblock %}

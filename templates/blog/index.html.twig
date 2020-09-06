@@ -4,6 +4,19 @@
 
 {% block body %}
 <div>
-	<h3>Estamos en el blog</h3>
+	{% for blog in blogs %}
+	    <a href="{{ url('id_blog',{'id':blog.idBlogPost}) }}">{{blog.title}}</a>
+	{% endfor %}
+</div>
+<div>
+	{% if blogSelect %}
+		<h3>{{ blogSelect.title }}</h3>
+		<h5>Autor: {{ blogSelect.idUser.name }} {{ blogSelect.idUser.lastName }} </h5>
+		<h6>{{ blogSelect.datePost.format('Y-m-d H:i:s') }} </h6>
+		{% if blogSelect.image %}
+			<img src="{{asset('uploads/images/') ~ blogSelect.image}}">
+		{% endif %}
+		<p>{{ blogSelect.body }}</p>
+	{% endif %}
 </div>
 {% endblock %}
