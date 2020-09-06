@@ -135,4 +135,20 @@ class InputBlogController extends AbstractController
         ]);	    
     }
 
+    /**
+     * @Route("/entrada/eliminar/{id}", name="delete_blog")
+     */
+    public function deleteBlog($id)
+    {
+    	$user = $this->getUser();
+    	$entityManager = $this->getDoctrine()->getManager();
+	    $blog = $entityManager->getRepository(BlogPosts::class)->find($id);
+	    if ($blog->getIdUser()==$user)
+	    {
+	    	$entityManager->remove($blog);
+			$entityManager->flush();
+	    }
+        return $this->redirectToRoute('input_blog');
+    }
+
 }
