@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * BlogPosts
@@ -10,7 +11,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="blog_posts", indexes={@ORM\Index(name="id_user", columns={"id_user"})})
  * @ORM\Entity
  */
-class BlogPosts
+class BlogPosts 
 {
     /**
      * @var int
@@ -38,16 +39,16 @@ class BlogPosts
     /**
      * @var string|null
      *
-     * @ORM\Column(name="image", type="string", length=50, nullable=true)
+     * @ORM\Column(name="image", type="string", length=50, nullable=true)     
      */
     private $image;
 
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="date_post", type="datetime", nullable=false, options={"default"="CURRENT_TIMESTAMP"})
+     * @ORM\Column(name="date_post", type="datetime", nullable=true)     
      */
-    private $datePost = 'CURRENT_TIMESTAMP';
+    private $datePost;
 
     /**
      * @var \Users

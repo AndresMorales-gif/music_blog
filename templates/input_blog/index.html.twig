@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hablemos de música: Mis estradas!{% endblock %}
+
+{% block body %}
+<div>
+	<h3>Bienvenido {{ app.user.username }} que vamos a escribir hoy</h3>
+	<a href="{{url('new_blog')}}"><button>Nueva entrada</button></a>
+
+</div>
+{% endblock %}
