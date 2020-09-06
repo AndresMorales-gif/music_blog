@@ -15,13 +15,13 @@ class MessagesType extends AbstractType
     {
         $builder
             ->add('name', TextType::class, [
-                'alias' => 'Nombres'   
+                'label' => 'Nombres'   
             ])
             ->add('email', EmailType::class, [
-                'alias' => 'Correo'
+                'label' => 'Correo'
             ])
             ->add('message', TextType::class, [
-                'alias' => 'Mensaje'
+                'label' => 'Mensaje'
             ])
         ;
     }
