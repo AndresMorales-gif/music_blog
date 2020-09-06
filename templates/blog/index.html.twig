@@ -4,6 +4,8 @@
 
 {% block body %}
 <div>
-	<h3>Estamos en el blog</h3>
+	{% for blog in blogs %}
+	    <a href="{{ url('id_blog',{blog.idBlogPost}) }}">{{blog.title}}</a>
+	{% endfor %}
 </div>
 {% endblock %}
