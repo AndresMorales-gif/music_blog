@@ -3,14 +3,17 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
  * Users
  *
- * @ORM\Table(name="users", uniqueConstraints={@ORM\UniqueConstraint(name="nickname", columns={"nickname"}), @ORM\UniqueConstraint(name="email", columns={"email"})})
+ * @ORM\Table(name="users", uniqueConstraints={@ORM\UniqueConstraint(name="username", columns={"username"}), @ORM\UniqueConstraint(name="email", columns={"email"})})
  * @ORM\Entity
+ * @UniqueEntity(fields={"username"}, message="There is already an account with this username")
  */
-class Users
+class Users implements UserInterface
 {
     /**
      * @var int
@@ -24,9 +27,9 @@ class Users
     /**
      * @var string
      *
-     * @ORM\Column(name="nickname", type="string", length=50, nullable=false)
+     * @ORM\Column(name="username", type="string", length=50, nullable=false)
      */
-    private $nickname;
+    private $username;
 
     /**
      * @var string
@@ -56,19 +59,40 @@ class Users
      */
     private $email;
 
+    private $roles = [];
+
+    // ...
+    public function getRoles(): array
+    {
+        $roles = $this->roles;
+        // guarantee every user at least has ROLE_USER
+        $roles[] = 'ROLE_USER';
+
+        return array_unique($roles);
+    }
+    
+
+    public function getSalt(){
+        return null;
+    }
+
+    public function eraseCredentials(){
+
+    }
+
     public function getIdUser(): ?int
     {
         return $this->idUser;
     }
 
-    public function getNickname(): ?string
+    public function getUsername(): ?string
     {
-        return $this->nickname;
+        return $this->username;
     }
 
-    public function setNickname(string $nickname): self
+    public function setUsername(string $username): self
     {
-        $this->nickname = $nickname;
+        $this->username = $username;
 
         return $this;
     }
