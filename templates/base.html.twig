@@ -3,34 +3,42 @@
     <head>
         <meta charset="UTF-8">
         <title>{% block title %}{% endblock %}</title>
+        <link rel="icon" type="image/ico" href="{{ asset('images/logo.ico') }}" />
+        <link rel="stylesheet" type="text/css" href="{{ asset('css/style.css') }}" />
         {% block stylesheets %}{% endblock %}
+
     </head>
     <body>
         <div>
+            <div id="initialBar">
             {% if is_granted('IS_ANONYMOUS') %}
-            <div>
-                <a href="{{url('app_login')}}"><button>Login</button></a>
+            
+                <a href="{{url('app_login')}}"><button class="button">Iniciar sesion</button></a>
                 <a href="{{url('app_register')}}">Registrate!!</a>
-            </div>
+            
             {%  else %}
-            <div>
-                <a href="{{url('app_logout')}}"><button>Logout</button></a>
-            </div>
+            
+                <a href="{{url('app_logout')}}"><button class="button">Cerrar sesion</button></a>
+            
             {% endif %} 
+            </div>
         </div>
-    	<div>
+    	<div id="menu">
     		<nav>
     			<ul>
     				<li>
-    					<a href="{{url('home')}}">Home</a>
+    					<a href="{{url('home')}}">Inicio</a>
     				</li>
+                    <li class="barra">|</li>
     				<li>
     					<a href="{{url('blog')}}">Blog</a>
     				</li>
+                    <li class="barra">|</li>
     				<li>
-    					<a href="{{url('contacto')}}">Contact</a>
+    					<a href="{{url('contacto')}}">Contacto</a>
     				</li>
                     {% if is_granted('ROLE_USER') %}
+                    <li class="barra">|</li>
                     <li>
                         <a href="{{url('input_blog')}}">Mis entradas de blog</a>
                     </li>
@@ -38,7 +46,10 @@
     			</ul>
     		</nav>
     	</div>
-        {% block body %}{% endblock %}
+        <div id="section">
+            {% block body %}{% endblock %}
+            
+        </div>
         {% block javascripts %}{% endblock %}
     </body>
 </html>

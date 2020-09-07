@@ -3,18 +3,23 @@
 {% block title %}Nuevo blog{% endblock %}
 
 {% block body %}
+<div class="sectionAll">
     {% for flashError in app.flashes('verify_email_error') %}
         <div class="alert alert-danger" role="alert">{{ flashError }}</div>
     {% endfor %}
 
-    <h1>Register</h1>
-
-    {{ form_start(form) }}
-        {{ form_row(form.title) }}        
-        {{ form_row(form.body) }}
-        {{ form_row(form.image) }}
-        
-
-        <button type="submit" class="btn">Register</button>
-    {{ form_end(form) }}
+    
+    <div id="formBlog">
+        <h1>Escribamos una nueva entrada de blog</h1>
+        {{ form_start(form) }}
+            {{ form_row(form.title) }}        
+            {{ form_row(form.body) }}
+            {{ form_row(form.image) }}
+            
+            <div id="butForm">
+                <button type="submit" class="button">Guardar</button>
+            </div>    
+        {{ form_end(form) }}
+    </div>
+</div>   
 {% endblock %}

@@ -3,20 +3,26 @@
 {% block title %}Hello BlogController!{% endblock %}
 
 {% block body %}
-<div>
-	{% for blog in blogs %}
-	    <a href="{{ url('id_blog',{'id':blog.idBlogPost}) }}">{{blog.title}}</a>
-	{% endfor %}
-</div>
-<div>
-	{% if blogSelect %}
-		<h3>{{ blogSelect.title }}</h3>
-		<h5>Autor: {{ blogSelect.idUser.name }} {{ blogSelect.idUser.lastName }} </h5>
-		<h6>{{ blogSelect.datePost.format('Y-m-d H:i:s') }} </h6>
-		{% if blogSelect.image %}
-			<img src="{{asset('uploads/images/') ~ blogSelect.image}}">
+<div class="sectionAll">
+	<div id="titBlog">
+		<h1 class="title">Nuestros Blogs</h1>
+	</div>
+
+	<div id="listBlogs">
+		{% for blog in blogs %}
+		    <a href="{{ url('id_blog',{'id':blog.idBlogPost}) }}">{{blog.title}}</a><br/>
+		{% endfor %}
+	</div>
+	<div id="contentBlog">
+		{% if blogSelect %}
+			<h3>{{ blogSelect.title }}</h3>
+			<h5>Autor: {{ blogSelect.idUser.name }} {{ blogSelect.idUser.lastName }} </h5>
+			<h6>{{ blogSelect.datePost.format('Y-m-d H:i:s') }} </h6>
+			{% if blogSelect.image %}
+				<img src="{{asset('uploads/images/') ~ blogSelect.image}}">
+			{% endif %}
+			<p>{{ blogSelect.body }}</p>
 		{% endif %}
-		<p>{{ blogSelect.body }}</p>
-	{% endif %}
+</div>
 </div>
 {% endblock %}

@@ -1,0 +1,172 @@
+@charset "utf-8";
+
+@import url('https://fonts.googleapis.com/css2?family=Yanone+Kaffeesatz&display=swap');
+
+body{
+	background: #AAA;
+}
+#initialBar{
+	width: 100%;
+	height: 30px;
+	background: #111;
+	text-align: right;	
+}
+#initialBar a{
+	color: #FFF;
+	font-family: 'Yanone Kaffeesatz', sans-serif;
+	font-size: 20px;
+	padding: 10px;
+}
+.button{
+	width: 150px;
+	height: 25px;
+	margin-right: 10px;
+	margin-top: 2px;
+	border-radius: 5px;
+	font-family: 'Yanone Kaffeesatz', sans-serif;
+	font-size: 15px;
+	color: #FFF;
+	background: #77A;
+}
+.button:hover{
+	background: #558;	
+}
+#menu{
+	width: auto;
+	height: 70px;
+	background: #B9C;
+	text-align: center;
+	box-shadow: 10px 5px 5px black;
+}
+
+#menu ul{
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	display: inline-block;
+}
+#menu ul li{
+	float: left;
+
+}
+
+#menu a{
+	color: #000;
+	text-decoration: none;
+	display: block;
+	border-radius: 5px;
+	padding: 20px 50px 20px 50px;
+	font-family: 'Yanone Kaffeesatz', sans-serif;
+	font-size: 30px;
+}
+.barra{
+	color #000;
+	padding: 15px 0 0 0;
+	font-size: 30px;
+}
+#menu a:hover{
+	color: #FFF;
+	background: #448;
+}
+#section{
+	padding: 10px 5px 5px 5px;
+}
+.sectionAll{
+	background: #CCE;
+	width: auto;
+
+	min-height: 600px;
+	padding: 50px;
+	font-family: 'Yanone Kaffeesatz', sans-serif;
+}
+#title{
+	text-align: center;
+	font-size: 30px;
+}
+#body{
+	font-size: 20px;
+}
+#formContact{
+	margin: auto;
+	width: 300px;
+	height: 300px;
+	background: #BBD;
+	padding: 50px;
+	border: 1px solid;
+	box-shadow: 10px 5px 5px black;
+}
+#formContact h1{
+	margin: 10px 0 10px 0;
+	text-align: center;
+	font-size: 40px;
+}
+#formContact form{
+	margin: auto;
+	padding: auto;
+}
+#formContact form label{
+	color: AAA;
+	font-size: 20px;
+	margin-top: 5px;
+}
+#formContact form input{
+	height: 30px;
+	width: 100%;
+	margin: 5px;	
+}
+#formContact form textarea{
+	height: 30px;
+	width: 100%;
+	margin: 5px;	
+}
+#butForm{
+	margin-top: 10px;
+	width: 100%;
+	text-align: center;
+}
+#formContact .button{
+	margin: auto;
+}
+#blog_title{
+	width: 100%;
+}
+#blog_body{
+	width: 100%;
+	min-height: 300px;
+}
+#formBlog form label{
+	color: #888;
+	font-size: 20px;
+}
+#formBlog h1{
+	text-align: center;
+}
+.title{
+	text-align: center;
+}
+#titBlog{
+	width: 100%;
+}
+#listBlogs{
+	width: 25%;
+	min-height: 250px;
+	font-size: 20px;
+	padding: 35px;
+	float:left;	 
+	border: 1px solid;
+}
+#listBlogs a{
+	color: #000;
+	text-decoration: none;
+	display: block;
+	margin-top: 10px;
+}
+#contentBlog{
+	width: 60%;
+	min-height: 250px;
+	float:right;
+}
+#contentBlog img{
+	max-height: 150px;
+	max-width: 150px; 
+}

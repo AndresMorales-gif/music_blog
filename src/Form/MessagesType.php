@@ -6,6 +6,7 @@ use App\Entity\Messages;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -15,13 +16,13 @@ class MessagesType extends AbstractType
     {
         $builder
             ->add('name', TextType::class, [
-                'label' => 'Nombres'   
+                'label' => 'Nombres:'   
             ])
             ->add('email', EmailType::class, [
-                'label' => 'Correo'
+                'label' => 'Correo:'
             ])
-            ->add('message', TextType::class, [
-                'label' => 'Mensaje'
+            ->add('message', TextareaType::class, [
+                'label' => 'Mensaje:'
             ])
         ;
     }

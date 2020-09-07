@@ -3,14 +3,20 @@
 {% block title %}Hello ContactoController!{% endblock %}
 
 {% block body %}
-<h1>Contacto</h1>
+<div class="sectionAll">
+<div id="formContact">
+	<h1>Contacto</h1>
 
-    {{ form_start(form) }}
-        {{ form_row(form.name) }}        
-        {{ form_row(form.email) }}
-        {{ form_row(form.message) }}
-        
+	    {{ form_start(form) }}
+	        {{ form_row(form.name) }}        
+	        {{ form_row(form.email) }}
+	        {{ form_row(form.message) }}
+	        
 
-        <button type="submit" class="btn">Register</button>
-    {{ form_end(form) }}
+	        <div id="butForm">
+	        	<button type="submit" class="button">Enviar</button>
+	        </div>	
+	    {{ form_end(form) }}
+</div>
+</div>
 {% endblock %}

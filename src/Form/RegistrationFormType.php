@@ -24,6 +24,7 @@ class RegistrationFormType extends AbstractType
             ->add('last_name', TextType::class, ['label' => 'Apellidos:'])
             ->add('email', EmailType::class, ['label' => 'Correo:'])
             ->add('agreeTerms', CheckboxType::class, [
+                'label' => 'Aceptar terminos',
                 'mapped' => false,
                 'constraints' => [
                     new IsTrue([

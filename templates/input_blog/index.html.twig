@@ -3,16 +3,16 @@
 {% block title %}Hablemos de música: Mis estradas!{% endblock %}
 
 {% block body %}
-{% for blog in blogs %}
-    <span>{{ blog.title }}</span>
-    <span>{{ blog.idUser.name }}</span>
-    <a href="{{ url('edit_blog', { 'id': blog.idBlogPost }) }}"><button>Editar</button></a>
-    <a href="{{ url('delete_blog', { 'id': blog.idBlogPost }) }}"><button>Eliminar</button></a>
-{% endfor %}
-
-<div>
-	<h3>Bienvenido {{ app.user.username }} que vamos a escribir hoy</h3>
-	<a href="{{url('new_blog')}}"><button>Nueva entrada</button></a>
-
+<div class="sectionAll">
+	<div class="title">
+		<h2>Bienvenido {{ app.user.username }} que vamos a escribir hoy</h2>
+		<a href="{{url('new_blog')}}"><button class="button">Nueva entrada</button></a>
+	</div>
+	<h3>Listas de blogs</h3>
+	{% for blog in blogs %}
+	    <span>{{ blog.title }}</span>
+	    <a href="{{ url('edit_blog', { 'id': blog.idBlogPost }) }}"><button class="button">Editar</button></a>
+	    <a href="{{ url('delete_blog', { 'id': blog.idBlogPost }) }}"><button class="button">Eliminar</button></a><br/>
+	{% endfor %}
 </div>
 {% endblock %}

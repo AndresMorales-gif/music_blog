@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>{% block title %}{% endblock %}</title>
+        <link rel="icon" type="image/ico" href="{{ asset('images/logo.ico') }}" />
+        <link rel="stylesheet" type="text/css" href="{{ asset('css/styleLogin.css') }}" />
+        {% block stylesheets %}{% endblock %}
+
+    </head>
+    <body>        
+        <div id="section">
+            <div id="imageLogo">
+                <a href="{{url('home')}}"><img src="{{asset('images/logo.png')}}"/></a>
+            </div>
+            {% block body %}{% endblock %}            
+        </div>
+        {% block javascripts %}{% endblock %}
+    </body>
+</html>
