@@ -1,3 +1,54 @@
 #index:
 #    path: /
 #    controller: App\Controller\DefaultController::index
+home:
+    path:       /
+    controller: App\Controller\HomeController::index
+    methods:    GET
+
+blog:
+    path:       /blog
+    controller: App\Controller\BlogController::index
+    methods:    GET
+
+id_blog:
+    path:       /blog/{id}
+    controller: App\Controller\BlogController::blogOne
+    methods:    GET   
+
+contacto:
+    path:       /contacto
+    controller: App\Controller\ContactoController::index
+    methods:    GET|POST
+
+input_blog:
+    path:       /entrada
+    controller: App\Controller\InputBlogController::index
+    methods:    GET
+
+new_blog:
+    path:       /entrada/nuevo
+    controller: App\Controller\InputBlogController::newBlog
+    methods:    GET|POST         
+
+edit_blog:
+    path:       /entrada/editar/{id}
+    controller: App\Controller\InputBlogController::editBlog
+    methods:    GET|POST
+
+delete_blog:
+    path:       /entrada/eliminar/{id}
+    controller: App\Controller\InputBlogController::deleteBlog
+    methods:    GET 
+
+app_login:
+    path:       /login
+    controller: App\Controller\LoginController::login
+
+app_logout:
+    path:       /logout
+    controller: App\Controller\LoginController::logout
+       
+app_register:
+    path:       /registro
+    controller: App\Controller\RegistrationController::register  

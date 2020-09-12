@@ -12,9 +12,7 @@ use Symfony\Component\String\Slugger\SluggerInterface;
 
 class InputBlogController extends AbstractController
 {
-    /**
-     * @Route("/entrada", name="input_blog")
-     */
+    
     public function index()
     {
     	$user = $this->getUser();
@@ -27,50 +25,41 @@ class InputBlogController extends AbstractController
         ]);
     }
 
-    /**
-     * @Route("/entrada/nuevo", name="new_blog")
-     */
     public function newBlog(Request $request, SluggerInterface $slugger)
     {
     	$user = $this->getUser();
         $blog = new BlogPosts();
-        // ...
-
+        
         $form = $this->createForm(BlogType::class, $blog);
         $form->handleRequest($request);
         
         if ($form->isSubmitted() && $form->isValid()) {
-            /** @var UploadedFile $imageFile */
+            
             $imageFile = $form->get('image')->getData();
 
-
-            // this condition is needed because the 'brochure' field is not required
-            // so the PDF file must be processed only when a file is uploaded
             if ($imageFile) {
+                
                 $originalFilename = pathinfo($imageFile->getClientOriginalName(), PATHINFO_FILENAME);
-                // this is needed to safely include the file name as part of the URL
                 $safeFilename = $slugger->slug($originalFilename);
                 $newFilename = $safeFilename.'-'.uniqid().'.'.$imageFile->guessExtension();
 
-                // Move the file to the directory where brochures are stored
                 try {
                     $imageFile->move(
                         $this->getParameter('images'),
                         $newFilename
                     );
                 } catch (FileException $e) {
-                    // ... handle exception if something happens during file upload
+                    
                 }
                 
-
-                // updates the 'brochureFilename' property to store the PDF file name
-                // instead of its contents
                 $blog->setImage($newFilename);
             }
+
             $blog->setIdUser($user);
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($blog);
             $entityManager->flush();
+            
             return $this->redirectToRoute('input_blog');
         }
 
@@ -79,9 +68,7 @@ class InputBlogController extends AbstractController
         ]);
     }
 
-    /**
-     * @Route("/entrada/editar/{id}", name="edit_blog")
-     */
+    
     public function editBlog($id, Request $request, SluggerInterface $slugger)
     {
     	$entityManager = $this->getDoctrine()->getManager();
@@ -99,34 +86,29 @@ class InputBlogController extends AbstractController
         $form->handleRequest($request);
         
         if ($form->isSubmitted() && $form->isValid()) {
-            /** @var UploadedFile $imageFile */
+            
             $imageFile = $form->get('image')->getData();
 
-
-            // this condition is needed because the 'brochure' field is not required
-            // so the PDF file must be processed only when a file is uploaded
             if ($imageFile) {
+                
                 $originalFilename = pathinfo($imageFile->getClientOriginalName(), PATHINFO_FILENAME);
-                // this is needed to safely include the file name as part of the URL
                 $safeFilename = $slugger->slug($originalFilename);
                 $newFilename = $safeFilename.'-'.uniqid().'.'.$imageFile->guessExtension();
 
-                // Move the file to the directory where brochures are stored
                 try {
                     $imageFile->move(
                         $this->getParameter('images'),
                         $newFilename
                     );
                 } catch (FileException $e) {
-                    // ... handle exception if something happens during file upload
+                    
                 }
                 
-
-                // updates the 'brochureFilename' property to store the PDF file name
-                // instead of its contents
                 $blog->setImage($newFilename);
             }
+
             $entityManager->flush();
+            
             return $this->redirectToRoute('input_blog');
         }
 
@@ -135,9 +117,7 @@ class InputBlogController extends AbstractController
         ]);	    
     }
 
-    /**
-     * @Route("/entrada/eliminar/{id}", name="delete_blog")
-     */
+    
     public function deleteBlog($id)
     {
     	$user = $this->getUser();
