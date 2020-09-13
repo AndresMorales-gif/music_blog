@@ -12,13 +12,15 @@
 
         {{ form_start(registrationForm) }}
             {{ form_row(registrationForm.username) }}        
+            <span id="message-username" class="message">Usuario no diponible</span>
             {{ form_row(registrationForm.plainPassword) }}
             {{ form_row(registrationForm.name) }}
             {{ form_row(registrationForm.last_name) }}
             {{ form_row(registrationForm.email) }}
+            <span id="message-email" class="message">Correo no diponible</span>
             {{ form_row(registrationForm.agreeTerms) }}
 
-            <div id="butForm"><button type="submit" class="button">Registrate</button></div>
+            <div id="butForm"><button id="buttonSubmit" type="submit" class="button">Registrate</button></div>
         {{ form_end(registrationForm) }}
     </div>
 {% endblock %}

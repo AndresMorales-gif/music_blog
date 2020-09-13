@@ -52,3 +52,8 @@ app_logout:
 app_register:
     path:       /registro
     controller: App\Controller\RegistrationController::register  
+
+user_available:
+    path:       /registro/disponible
+    controller: App\Controller\RegistrationController::userAvailable
+    methods:    POST     

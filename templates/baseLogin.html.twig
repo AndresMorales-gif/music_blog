@@ -5,6 +5,7 @@
         <title>{% block title %}{% endblock %}</title>
         <link rel="icon" type="image/ico" href="{{ asset('images/logo.ico') }}" />
         <link rel="stylesheet" type="text/css" href="{{ asset('css/styleLogin.css') }}" />
+        <script type="text/javascript" src="{{ asset('js/jquery-3.5.1.min.js') }}"></script>
         {% block stylesheets %}{% endblock %}
 
     </head>
@@ -16,5 +17,6 @@
             {% block body %}{% endblock %}            
         </div>
         {% block javascripts %}{% endblock %}
+        <script type="text/javascript" src="{{ asset('js/ajaxAvailable.js') }}"></script>
     </body>
 </html>

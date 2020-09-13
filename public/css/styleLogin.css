@@ -62,3 +62,13 @@ body{
 #content form .button{
 	margin: auto;
 }
+.message{
+	font-size: 12px;
+	color: #F44;
+}
+#message-username{
+	display: none;
+}
+#message-email{
+	display: none;
+}
