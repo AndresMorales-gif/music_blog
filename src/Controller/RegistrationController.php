@@ -6,6 +6,7 @@ use App\Entity\Users;
 use App\Form\RegistrationFormType;
 use App\Security\LoginAuthenticator;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -14,9 +15,7 @@ use Symfony\Component\Security\Guard\GuardAuthenticatorHandler;
 
 class RegistrationController extends AbstractController
 {
-    /**
-     * @Route("/register", name="app_register")
-     */
+    
     public function register(Request $request, UserPasswordEncoderInterface $passwordEncoder, GuardAuthenticatorHandler $guardHandler, LoginAuthenticator $authenticator): Response
     {
         if ($this->getUser()) {
@@ -52,4 +51,28 @@ class RegistrationController extends AbstractController
             'registrationForm' => $form->createView(),
         ]);
     }
+
+
+    public function userAvailable(Request $request) {
+
+        $repository = $this->getDoctrine()->getRepository(Users::class);
+        $data=$request->request->get('data');
+        $column=$request->request->get('column');
+
+        $user = $repository->findOneBy([$column => $data]);
+        
+        $available = true;
+        if ($user) {
+            $available = false;
+        }
+
+        $response = new JsonResponse();
+        $response->setStatusCode(200);
+        $response->setData(array(
+            'response' => 'success',
+            'data' => $available
+        ));
+        return $response;
+    }
+
 }

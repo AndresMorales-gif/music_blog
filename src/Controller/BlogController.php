@@ -8,9 +8,7 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class BlogController extends AbstractController
 {
-    /**
-     * @Route("/blog", name="blog")
-     */
+    
     public function index()
     {
     	$repository = $this->getDoctrine()->getRepository(BlogPosts::class);
@@ -21,10 +19,8 @@ class BlogController extends AbstractController
         ]);
     }
 
-    /**
-     * @Route("/blog/{id}", name="id_blog")
-     */
-    public function blog_one($id)
+    
+    public function blogOne($id)
     {
     	$repository = $this->getDoctrine()->getRepository(BlogPosts::class);
     	$blogs = $repository->findAll();
@@ -33,4 +29,5 @@ class BlogController extends AbstractController
             'blogs' => $blogs, 'blogSelect' => $blogSelect
         ]);
     }
+
 }

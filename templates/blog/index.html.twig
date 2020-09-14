@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello BlogController!{% endblock %}
+{% block title %}Hablemos de música: Blog{% endblock %}
 
 {% block body %}
 <div class="sectionAll">
@@ -21,7 +21,10 @@
 			{% if blogSelect.image %}
 				<img src="{{asset('uploads/images/') ~ blogSelect.image}}">
 			{% endif %}
-			<p>{{ blogSelect.body }}</p>
+			{%  for p in blogSelect.body|split('\n') %}
+			    <p>{{ p }}</p>
+			{% endfor %} 
+			
 		{% endif %}
 </div>
 </div>
