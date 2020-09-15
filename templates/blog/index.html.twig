@@ -16,8 +16,11 @@
 	<div id="contentBlog">
 		{% if blogSelect %}
 			<h3>{{ blogSelect.title }}</h3>
+			<h4>{{ blogSelect.subtitle }}</h4>
 			<h5>Autor: {{ blogSelect.idUser.name }} {{ blogSelect.idUser.lastName }} </h5>
-			<h6>{{ blogSelect.datePost.format('Y-m-d H:i:s') }} </h6>
+			{% if blogSelect.datePost %}
+				<h6>{{ blogSelect.datePost.format('Y-m-d H:i:s') }} </h6>
+			{% endif %}
 			{% if blogSelect.image %}
 				<img src="{{asset('uploads/images/') ~ blogSelect.image}}">
 			{% endif %}

@@ -127,10 +127,10 @@ body{
 #formContact .button{
 	margin: auto;
 }
-#blog_title{
+.inputText {
 	width: 100%;
 }
-#blog_body{
+.inputArea{
 	width: 100%;
 	min-height: 300px;
 }

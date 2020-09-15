@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use DateTimeZone;
 use App\Entity\BlogPosts;
 use App\Form\BlogType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -9,6 +10,7 @@ use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\String\Slugger\SluggerInterface;
+use Symfony\Component\Validator\Constraints\DateTime;
 
 class InputBlogController extends AbstractController
 {
@@ -35,8 +37,10 @@ class InputBlogController extends AbstractController
         
         if ($form->isSubmitted() && $form->isValid()) {
             
+            $datePost = new \DateTime();
+            $datePost->setTimezone(new DateTimeZone('America/Bogota'));
             $imageFile = $form->get('image')->getData();
-
+            $blog->setDatePost($datePost);
             if ($imageFile) {
                 
                 $originalFilename = pathinfo($imageFile->getClientOriginalName(), PATHINFO_FILENAME);
@@ -82,6 +86,7 @@ class InputBlogController extends AbstractController
 
 	    $form = $this->createForm(BlogType::class, $blog);
         $form->get('title')->setData($blog->getTitle());
+        $form->get('subtitle')->setData($blog->getSubtitle());
         $form->get('body')->setData($blog->getBody());
         $form->handleRequest($request);
         

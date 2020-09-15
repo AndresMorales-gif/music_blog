@@ -32,6 +32,13 @@ class BlogPosts
     /**
      * @var string
      *
+     * @ORM\Column(name="subtitle", type="string", length=250, nullable=true)
+     */
+    private $subtitle;
+
+    /**
+     * @var string
+     *
      * @ORM\Column(name="body", type="text", length=65535, nullable=false)
      */
     private $body;
@@ -46,7 +53,7 @@ class BlogPosts
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="date_post", type="datetime", nullable=true)     
+     * @ORM\Column(name="date_post", type="datetime", nullable=false)     
      */
     private $datePost;
 
@@ -73,6 +80,18 @@ class BlogPosts
     public function setTitle(string $title): self
     {
         $this->title = $title;
+
+        return $this;
+    }
+
+    public function getSubtitle(): ?string
+    {
+        return $this->subtitle;
+    }
+
+    public function setSubtitle(string $subtitle): self
+    {
+        $this->subtitle = $subtitle;
 
         return $this;
     }

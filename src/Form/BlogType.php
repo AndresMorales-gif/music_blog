@@ -22,6 +22,9 @@ class BlogType extends AbstractType
             ->add('title', TextType::class, [
                 'label' => 'Titulo:'
             ])
+            ->add('subtitle', TextType::class, [
+                'label' => 'Subtitulo:'
+            ])
             ->add('body', TextareaType::class, [
                 'label' => 'Cuerpo:'
             ])

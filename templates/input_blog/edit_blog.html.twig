@@ -12,8 +12,9 @@
     <h1>Actualizando mi blog!</h1>
 
     {{ form_start(form) }}
-        {{ form_row(form.title) }}        
-        {{ form_row(form.body) }}
+        {{ form_row(form.title, { 'attr': {'class': 'inputText'} }) }}
+        {{ form_row(form.subtitle, { 'attr': {'class': 'inputText'} }) }}        
+        {{ form_row(form.body, { 'attr': {'class': 'inputArea'} }) }}
         {{ form_row(form.image) }}
         
         <div id="butForm">
